@@ -563,3 +563,34 @@ footer {
 		padding: 20px;
 	}
 }
+
+.cart {
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 20px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-content {
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.cart-items {
+	list-style: none;
+	padding: 0;
+	margin: 10px 0;
+}
+
+.cart-item {
+	margin-bottom: 10px;
+}
+
+.cart-total {
+	margin-top: 10px;
+	text-align: right;
+}

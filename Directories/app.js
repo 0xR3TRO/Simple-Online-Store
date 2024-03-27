@@ -135,3 +135,47 @@ productButton.addEventListener("click", () => {
 close.addEventListener("click", () => {
 	payment.style.display = "none";
 });
+
+// Znajdujemy elementy koszyka
+const cart = document.querySelector(".cart");
+const cartItems = document.querySelector(".cart-items");
+const total = document.querySelector(".total");
+
+// Funkcja dodająca produkt do koszyka
+function addToCart(title, price) {
+	const item = document.createElement("li");
+	item.classList.add("cart-item");
+	item.innerHTML = `<span>${title}</span> - ${price} PLN`;
+	cartItems.appendChild(item);
+
+	// Aktualizujemy sumę
+	updateTotal(price);
+}
+
+// Funkcja aktualizująca sumę w koszyku
+function updateTotal(price) {
+	const currentTotal = parseFloat(total.textContent.replace(" PLN", ""));
+	total.textContent = (currentTotal + price).toFixed(2) + " PLN";
+}
+
+// Po kliknięciu przycisku "Kup teraz" dodajemy produkt do koszyka
+const buyButtons = document.querySelectorAll(".buyButton");
+buyButtons.forEach((button) => {
+	button.addEventListener("click", () => {
+		const productContainer = button.closest(".sliderItem");
+		const title = productContainer.querySelector(".sliderTitle").textContent;
+		const price = parseFloat(
+			productContainer.querySelector(".sliderPrice").textContent
+		);
+		addToCart(title, price);
+	});
+});
+
+// Pokazywanie i ukrywanie koszyka po najechaniu na ikonę koszyka
+cart.addEventListener("mouseenter", () => {
+	cartItems.style.display = "block";
+});
+
+cart.addEventListener("mouseleave", () => {
+	cartItems.style.display = "none";
+});
