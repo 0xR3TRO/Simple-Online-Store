@@ -32,7 +32,8 @@ $sql_create_table = "CREATE TABLE IF NOT EXISTS dane_klientow (
     numer_karty VARCHAR(16) NOT NULL,
     miesiac_waznosci VARCHAR(2) NOT NULL,
     rok_waznosci VARCHAR(4) NOT NULL,
-    cvv VARCHAR(3) NOT NULL
+    cvv VARCHAR(3) NOT NULL,
+    price VARCHAR(10) NOT NULL
 )";
 if ($conn->query($sql_create_table) === TRUE) {
     echo "Tabela 'dane_klientow' została pomyślnie utworzona lub już istnieje.<br>";
@@ -48,10 +49,11 @@ $cardNumber = $_POST['cardNumber'];
 $expiryMonth = $_POST['expiryMonth'];
 $expiryYear = $_POST['expiryYear'];
 $cvv = $_POST['cvv'];
+$price = $_POST['price'];
 
 // Wstaw dane do tabeli w bazie danych
 $sql_insert_data = "INSERT INTO dane_klientow (imie_nazwisko, numer_telefonu, adres, numer_karty, miesiac_waznosci, rok_waznosci, cvv)
-VALUES ('$name', '$phone', '$address', '$cardNumber', '$expiryMonth', '$expiryYear', '$cvv')";
+VALUES ('$name', '$phone', '$address', '$cardNumber', '$expiryMonth', '$expiryYear', '$cvv', '$price')";
 
 if ($conn->query($sql_insert_data) === TRUE) {
     echo "Dane zostały pomyślnie zapisane.";
